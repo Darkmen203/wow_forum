@@ -1,0 +1,21 @@
+<h1>New Question</h1>
+
+<%= form_with(model: @question, url: '/create') do |form| %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :body %>
+    <%= form.text_area :body %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit class: 'px-8 py-2 text-center rounded text-base hover:text-white hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300 transition duration-300 ease-in-out' %>
+  </div>
+
+<% end %>
+
+

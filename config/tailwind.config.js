@@ -12,6 +12,15 @@ module.exports = {
       fontFamily: {
         sans: ['Inter var', ...defaultTheme.fontFamily.sans],
       },
+      colors: {
+        clifford: '#da373d',
+      },
+      backgroundImage: {
+        'custom-gradient': 'linear-gradient(to bottom, #57a5de 0%, #047fbd 100%)',
+      },
+      height: {
+        'screen-without-header': 'calc(100vh-2.5rem)',
+      },
     },
   },
   plugins: [

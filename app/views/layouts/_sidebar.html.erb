@@ -1,0 +1,14 @@
+<ul class="text-xl text-center">
+  <li class="py-2 transition duration-300 ease-in-out rounded hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300 hover:text-background <%= 'bg-violet-600/60 text-background' if current_page?(action: 'show') %>">
+    <%= link_to 'Просмотр профиля', '/profile/show' %>
+  </li>
+  <li class="py-2 transition duration-300 ease-in-out rounded hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300 hover:text-background <%= 'bg-violet-600/60 text-background' if current_page?( action: 'my_questions') %>">
+    <%= link_to 'Мои вопросы', '/profile/my_questions' %>
+  </li>
+  <li class="py-2 transition duration-300 ease-in-out rounded hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300 hover:text-background <%= 'bg-violet-600/60 text-background' if current_page?(controller: 'profiles', action: 'my_answers') %>">
+    <%= link_to 'Мои ответы', '/profile/my_answers' %>
+  </li>
+  <li class="py-2 transition duration-300 ease-in-out rounded hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300 hover:text-background <%= 'bg-violet-600/60 text-background' if current_page?(controller: 'profiles', action: 'settings') %>">
+    <%= link_to 'Настройки', '/profile/settings' %>
+  </li>
+</ul>

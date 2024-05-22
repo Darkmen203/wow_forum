@@ -12,8 +12,36 @@
   </head>
 
   <body>
-    <main class="container mx-auto mt-28 px-5 flex">
+    <header class="grid grid-flow-col grid-rows-1 h-10 place-items-center border-b border-b-black">
+      <a href="/">
+          <h1 class="text-xl font-bold">WowForum</h1>
+      </a>
+      <nav class="col-span-4 w-full h-full">
+          <ol class="inline-flex justify-center w-full h-full">
+            <% [{name: "BMX", url: "#"}, {name: "BIKES", url: "#"}, {name: "Profile", url: "/profile/show"}].each do |category| %>
+              <%= link_to category[:url], class: 'px-8 flex items-center hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300 transition duration-300 ease-in-out h-full' do %>
+                <li><%= category[:name] %></li>
+              <% end %>
+            <% end %>
+          </ol>
+      </nav>
+      <% if session[:user_id] %>
+          <%= button_to 'Выйти', '/logout', method: 'get', class: 'px-8 hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300 transition duration-300 ease-in-out h-full' %>
+      <% else %>
+          <%= link_to 'Войти с помощью Github', '/auth/github', class: ' flex items-center px-8 hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300 transition duration-300 ease-in-out h-full' %>
+      <% end %>
+    </header>
+    <% if controller.controller_name == 'profiles' %>
+      <div class="flex w-full h-screen-without-header">
+        <aside class="w-1/4 p-4 border-r border-black">
+          <%= render 'layouts/sidebar' %>
+        </aside>
+        <main class="w-3/4 p-4">
+          <%= yield %>
+        </main>
+      </div>
+    <% else %>
       <%= yield %>
-    </main>
+    <% end %>
   </body>
 </html>

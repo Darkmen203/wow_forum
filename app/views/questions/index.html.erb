@@ -1,0 +1,30 @@
+<main class="my-2 p-2 container mx-auto">
+    <div class="title flex justify-between text-lg mx-auto font-medium pb-2 px-4 border-collapse border-b border-black" role="title">
+        <h2>Questions</h2>
+        <%= link_to 'Создать вопрос', '/new', class: 'px-8 rounded hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300 transition duration-300 ease-in-out h-full' %>
+    </div>
+    <table class="my-4 min-w-full text-sm font-light text-surface text-center">
+        <thead class="border-b border-neutral-200 font-medium dark:border-white/10">
+            <tr>
+                <th class="px-6 py-4">Author</th>
+                <th class="px-6 py-4">Question</th>
+                <th class="px-6 py-4">Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @questions.each do |question| %>
+                <tr class="border-b border-neutral-200 transition duration-300 ease-in-out hover:bg-neutral-100">
+                    <td class="whitespace-nowrap">
+                        <a class="px-6 py-4 h-full w-full inline-block" href="<%= question_path(question) %>"><%= question.user.login %></a>
+                    </td>
+                    <td class="whitespace-nowrap">
+                        <a class="px-6 py-4 h-full w-full inline-block" href="<%= question_path(question) %>"><%= question.title %></a>
+                    </td>
+                    <td class="whitespace-nowrap">
+                        <a class="px-6 py-4 h-full w-full inline-block" href="<%= question_path(question) %>"><%= question.created_at.strftime("%Y-%m-%d %H:%M:%S") %></a>
+                    </td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+</main>

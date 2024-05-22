@@ -1,0 +1,77 @@
+<main class="my-2 p-2 container mx-auto flex justify-center flex-col">
+  <%= link_to 'Back to Questions', questions_path, class: 'px-8 py-2 text-center rounded text-base hover:text-white hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300 transition duration-300 ease-in-out' %>
+  <div class="m-0 mt-2 p-0 bg-white rounded border border-[#2982cc]">
+    <div class="bg-custom-gradient border-none border-b border-[#5176b5] text-white text-xs font-bold m-0 p-1">
+      <h2 class="flex align-middle items-center text-lg">
+        <img src="/mQ60T6PpnAMqc37AQkz1pz2hhDpbwVBz0PCsiEN5z2d.gif" class="border-none inline-block" alt=">" width="8" height="36">&nbsp;<%= @question.title %>
+      </h2>
+    </div>
+    <table class="bg-transparent text-[#222] text-xs leading-[135%] border-collapse w-full text-center" cellspacing="1">
+      <tbody>
+        <tr>
+          <td class="bg-blue-100 break-words border-r border-white" style="min-width:160px" id="ph-124018197-d1">
+            <span class="font-bold text-xs text-black"><%= @question.user.login %></span>
+          </td>
+          <td class="bg-blue-100 break-words py-1" width="99%">
+            <%= @question.created_at.strftime("%Y.%m.%d %H:%M:%S") %>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top" class="bg-slate-50 border-r text-center py-2 pb-4 border-white">
+            <img src="/mQ6093WS04sftZpfp7E5SJIyK9jym8dCz0RfxHKZd4XDz18z1.jpg" class="border-none mx-auto" alt="">
+          </td>
+          <td width="100%" valign="top" class="pt-2 bg-slate-50">
+            <div>
+              <!-- Тело сообщения -->
+              <span><%= @question.body %></span>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <section class="answer mt-0 flex flex-col border-collapse border border-slate-300">
+    <% unless @answers.nil? %>
+      <%  @answers.each do | a | %>
+        <table class="bg-transparent text-[#222] text-xs leading-[135%] border-collapse w-full text-center" cellspacing="1">
+          <tbody>
+            <tr>
+              <td class="bg-blue-100 break-words border-r border-white" style="min-width:160px" id="ph-124018197-d1">
+                <span class="font-bold text-xs text-black"><%= a.user.login %></span>
+              </td>
+              <td class="bg-blue-100 break-words py-1" width="99%">
+                <%= a.created_at.strftime("%Y.%m.%d %H:%M:%S") %>
+              </td>
+            </tr>
+            <tr>
+              <td valign="top" class="bg-slate-50 border-r text-center py-2 pb-4 border-white">
+                <img src="/mQ6093WS04sftZpfp7E5SJIyK9jym8dCz0RfxHKZd4XDz18z1.jpg" class="border-none mx-auto" alt="">
+              </td>
+              <td width="100%" valign="top" class="pt-2 bg-slate-50">
+                <div>
+                  <!-- Тело сообщения -->
+                  <span><%= a.body %></span>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      <%  end %>
+    <% else %>
+      <p>Нет ответов на этот вопрос.</p>
+    <% end %>
+
+
+    <label for="send_answer" class="bg-custom-gradient text-white text-base text-center">Написать ответ: </label>
+    <%= form_with url: '/answer/create', local: true, method: :post,  class: 'space-y-6' do %>
+          <div class="space-y-4">
+            <div class="field">
+              <%= text_area_tag 'answer[body]', nil, placeholder: "Напишите ваш ответ...", rows: 17, cols: 20, id: "send_answer", class: "w-full min-h-36 resize-y" %>
+            </div>
+
+            <%= submit_tag 'Отправить', class: 'w-full cursor-pointer px-8 py-2 rounded text-base bg-blue-300 hover:text-white hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300 transition duration-300 ease-in-out' %>
+          </div>
+        <% end %>
+  </section>
+</main>

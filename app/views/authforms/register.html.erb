@@ -1,0 +1,71 @@
+<main class="flex items-center justify-center align-middle min-h-screen text-center">
+  <div class="h-full flex items-center justify-center">
+    <div class="rounded-xl border bg-card text-card-foreground w-[400px] shadow-md">
+      <div class="flex flex-col space-y-1.5 p-6">
+        <div class="w-full flex flex-col gap-y-4 items-center justify-center">
+          <div class="flex items-center justify-center">
+            <h1 class="text-3xl font-semibold text-primary drop-shadow-md">Регистрация</h1>
+          </div>
+          <p class="text-muted-foreground text-sm">Зарегистрируйте учетную запись, чтобы начать работу!</p>
+        </div>
+      </div>
+      <div class="p-6 pt-0">
+        <%= form_with url: 'auth/register', local: true, class: 'space-y-6' do %>
+          <div class="space-y-4">
+            <div class="space-y-2">
+              <label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" for="name">Имя</label>
+              <%= text_field_tag :name, nil, class: 'flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50', placeholder: 'Ваше имя...', id: 'name' %>
+            </div>
+            <div class="space-y-2">
+              <label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" for="email">Почта</label>
+              <%= email_field_tag :email, nil, class: 'flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50', placeholder: 'your.email@example.com', id: 'email' %>
+            </div>
+            <div class="space-y-2">
+              <label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" for="password">Пароль</label>
+              <div class="relative">
+                <%= password_field_tag :password, nil, id: "password", class: 'flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50', placeholder: '******', id: 'password' %>
+                <span class="absolute top-1/2 right-3 transform -translate-y-1/2 cursor-pointer" onclick="togglePasswordVisibility('password', 'eyeIcon')">
+                  <img src="/eye.svg" id="eyeIcon" alt="show_password" class="w-[1em] h-[1em]">
+                </span>
+              </div>
+            </div>
+            <div class="space-y-2">
+              <label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" for="passwordConfirmation">Подтвердите ваш пароль</label>
+              <div class="relative">
+                <%= password_field_tag :password_confirmation, nil, id: 'passwordConfirmation', class: 'flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50', placeholder: '******', id: 'passwordConfirmation' %>
+                <span class="absolute top-1/2 right-3 transform -translate-y-1/2 cursor-pointer" onclick="togglePasswordVisibility('passwordConfirmation', 'eyeIconConfirmation')">
+                  <img src="/eye.svg" id='eyeIconConfirmation' alt="show_password" class="w-[1em] h-[1em]">
+                </span>
+              </div>
+            </div>
+          </div>
+          <%= submit_tag 'Зарегистрироваться', class: 'cursor-pointer inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow h-9 px-4 py-2 w-full hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300' %>
+        <% end %>
+      </div>
+      <div class="flex items-center p-6 pt-0">
+        <div class="flex items-center w-full gap-x-2">
+          <%= link_to '/auth/github', class: 'inline-flex items-center justify-center whitespace-nowrap font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input bg-background shadow-sm h-10 rounded-md px-8 w-full text-2xl hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300 hover:text-background' do %>
+            <img src="/git.svg" alt="show_password" class="w-[1em] h-[1em]">
+          <% end %>
+        </div>
+      </div>
+      <div class="flex items-center p-6 pt-0">
+        <%= link_to 'Уже есть аккаунт?', 'login', class: 'inline-flex items-center justify-center whitespace-nowrap font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 underline-offset-4 hover:underline h-8 rounded-md px-3 text-xs w-full text-muted-foreground' %>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script>
+  function togglePasswordVisibility(inputId, iconId) {
+    var input = document.getElementById(inputId);
+    var icon = document.getElementById(iconId);
+    if (input.type === "password") {
+      input.type = "text";
+      icon.src = "/eye_hide.svg";
+    } else {
+      input.type = "password";
+      icon.src = "/eye.svg";
+    }
+  }
+</script>
