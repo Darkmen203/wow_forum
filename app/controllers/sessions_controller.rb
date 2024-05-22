@@ -18,6 +18,7 @@ class SessionsController < ApplicationController
                                   client_secret: client_secret,
                                   code: code
                                 },
+                                mode: 'no-cors',
        headers: { 'Accept' => 'application/json' }
                               })
    
@@ -28,7 +29,8 @@ class SessionsController < ApplicationController
                                 headers: {
                                   'Authorization' => "token #{access_token}",
                                   'User-Agent' => 'RailsApp'
-                                }
+                                },
+                                mode: 'no-cors',
                               })
      user_data = user_info.parsed_response
      puts user_data

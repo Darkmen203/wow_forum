@@ -1,4 +1,4 @@
-class AuthformsController < ApplicationController
+class AuthsController < ApplicationController
     def login
     #   @questions = Question.all.order(:created_at)
     end

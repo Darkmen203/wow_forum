@@ -20,8 +20,8 @@ Rails.application.routes.draw do
 
 
 
-  get 'authform/login', to: "authforms#login"
-  get 'authform/register', to: "authforms#register"
+  get 'auth/login', to: "auths#login"
+  get 'auth/register', to: "auths#register"
   get 'profile/show', to: "profiles#show"
   get 'profile/my_answers', to: "profiles#my_answers" 
   get 'profile/my_questions', to: "profiles#my_questions"

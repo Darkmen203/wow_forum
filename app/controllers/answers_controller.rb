@@ -13,7 +13,7 @@ class AnswersController < ApplicationController
     # puts '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n#FF0000'
     # puts request.referrer.split('/').last
     # puts @answer.user_id
-    # puts @answer.body
+    # puts @answer.body 
     if @answer.save
       redirect_to question_path(@answer.question_id), notice: "Ответ успешно создан."
     else
