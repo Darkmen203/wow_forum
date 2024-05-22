@@ -65,3 +65,8 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+gem "tailwindcss-rails", "~> 2.6"
+
+gem 'dotenv-rails', groups: [:development, :test]
+gem 'httparty'
