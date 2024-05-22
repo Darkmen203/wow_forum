@@ -8,12 +8,12 @@ class QuestionTest < ActiveSupport::TestCase
 
   describe Question do
     it 'cannot have an empty title' do
-      question = Question.new(body: 'some text')
+      question = Question.create(body: 'some text')
       _(question.valid?).must_equal false
     end
 
     it 'cannot have an empty body' do
-      question = Question.new(title: 'some text')
+      question = Question.create(title: 'some text')
       _(question.valid?).must_equal false
     end
   end
