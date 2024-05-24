@@ -74,6 +74,8 @@ class SessionsController < ApplicationController
       puts user.provider
       puts user.id
       session[:user_id] = user.id
+      session[:name] = user.name
+      session[:avatar_url] = user.avatar_url
     
       redirect_to root_path, notice: 'Signed in!'
     end
