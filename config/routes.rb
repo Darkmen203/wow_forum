@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   get '/auth/register', to: "auths#register", as: :register_path
   post '/auth/create', to: "auths#create"
   post 'auth/sign', to: "auths#sign"
+  post 'auth/change_password', to: "auths#change_password"
   get 'profile/show', to: "profiles#show"
   get 'profile/my_answers', to: "profiles#my_answers" 
   get 'profile/my_questions', to: "profiles#my_questions"
