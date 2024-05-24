@@ -1,0 +1,84 @@
+
+<div class="h-full w-full flex items-center text-center flex-col gap-2">
+    <section class="name_profile w-40 pb-2">
+        <span class="font-bold text-base text-black">Darkmen203</span>
+        <button class="w-5 h-5">
+            <img src="/edit.svg" alt="изменить имя">
+        </button>
+    </section>
+    <section class="image_profile_settings w-64 border p-2 rounded">
+        <%= form_with url: '/uploads/create', local: true do |form| %>
+            <div class="edit_file group/edit_file w-40 text-center mx-auto h-46 relative bottom-0">
+                <label for='upload_new_avatar' class='editbutton group-hover/edit_file:opacity-100 z-50 opacity-0 absolute inset-1/2 -translate-x-1/2 -translate-y-1/2 h-36 w-full hover:opacity-100 flex items-center justify-center cursor-pointer'>
+                    <img class="w-8 h-8" src="/edit.svg" alt="изменить имя">
+                </label>
+                <%= form.file_field :files, class: 'hidden', id: 'upload_new_avatar', accept: 'image/*', onchange: 'previewImage(event)' %>
+
+                <div class="container h-36 w-full relative">
+                    <img id="avatarPreview" class='group-hover/edit_file:opacity-70 w-full h-36 object-full hover:opacity-70 ' src="/mQ6093WS04sftZpfp7E5SJIyK9jym8dCz0RfxHKZd4XDz18z1.jpg" alt="" />
+                </div>
+            </div>
+            <div class='mt-4'>
+                <%= form.submit "Upload", class: 'cursor-pointer inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow h-9 px-4 py-2 w-full hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300 hover:text-background' %>
+            </div>
+        <% end %>
+    </section>
+    <section class="change_password w-64 border p-2 rounded">
+        <%= form_with url: 'auth/change_password', local: true, class: 'space-y-6' do %>
+            <div class="space-y-4">
+                <div class="space-y-2">
+                    <label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" for="currentPassword">Текущий пароль</label>
+                    <div class="relative">
+                        <%= password_field_tag :current_password, nil, id: "currentPassword", class: 'flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50', placeholder: '******' %>
+                        <span class="absolute top-1/2 right-3 transform -translate-y-1/2 cursor-pointer" onclick="togglePasswordVisibility('currentPassword', 'eyeIconCurrent')">
+                            <img src="/eye.svg" id="eyeIconCurrent" alt="show_password" class="w-[1em] h-[1em]">
+                        </span>
+                    </div>
+                </div>
+                <div class="space-y-2">
+                    <label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" for="newPassword">Новый пароль</label>
+                    <div class="relative">
+                        <%= password_field_tag :new_password, nil, id: "newPassword", class: 'flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50', placeholder: '******' %>
+                        <span class="absolute top-1/2 right-3 transform -translate-y-1/2 cursor-pointer" onclick="togglePasswordVisibility('newPassword', 'eyeIcon')">
+                        <img src="/eye.svg" id="eyeIcon" alt="show_password" class="w-[1em] h-[1em]">
+                        </span>
+                    </div>
+                </div>
+                <div class="space-y-2">
+                    <label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" for="newPasswordConfirmation">Подтвердите новый пароль</label>
+                    <div class="relative">
+                        <%= password_field_tag :new_password_confirmation, nil, id: 'newPasswordConfirmation', class: 'flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50', placeholder: '******' %>
+                        <span class="absolute top-1/2 right-3 transform -translate-y-1/2 cursor-pointer" onclick="togglePasswordVisibility('newPasswordConfirmation', 'eyeIconConfirmation')">
+                        <img src="/eye.svg" id='eyeIconConfirmation' alt="show_password" class="w-[1em] h-[1em]">
+                        </span>
+                    </div>
+                </div>
+                <%= submit_tag 'Сохранить новый пароль', class: 'cursor-pointer inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow h-9 px-4 py-2 w-full hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300 hover:text-background' %>
+            </div>
+        <% end %>
+    </section>
+</div>
+
+
+<script>
+    function togglePasswordVisibility(inputId, iconId) {
+        var input = document.getElementById(inputId);
+        var icon = document.getElementById(iconId);
+        if (input.type === "password") {
+            input.type = "text";
+            icon.src = "/eye_hide.svg";
+        } else {
+            input.type = "password";
+            icon.src = "/eye.svg";
+        }
+    }
+    function previewImage(event) {
+        var input = event.target;
+        var reader = new FileReader();
+        reader.onload = function() {
+            var img = document.getElementById('avatarPreview');
+            img.src = reader.result;
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
+</script>

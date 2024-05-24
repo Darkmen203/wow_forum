@@ -22,10 +22,10 @@ Rails.application.routes.draw do
 
   get "auth/login" => "auths#login", as: :login_path
   get 'auth/register', to: "auths#register"
-  get 'profile/show', to: "profiles#show"
-  get 'profile/my_answers', to: "profiles#my_answers" 
-  get 'profile/my_questions', to: "profiles#my_questions"
-  get 'profile/settings', to: "profiles#settings"
+  get 'profile/show', to: "users#show"
+  get 'profile/my_answers', to: "users#my_answers" 
+  get 'profile/my_questions', to: "users#my_questions"
+  get 'profile/settings', to: "users#settings"
 
 
   post '/uploads/create', to: "users#create_avatar_file"
