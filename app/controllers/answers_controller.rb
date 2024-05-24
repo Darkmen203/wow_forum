@@ -4,6 +4,7 @@ class AnswersController < ApplicationController
   end
 
   def create
+    redirect_to login_path_url unless current_user
     @answer = Answer.create(body: answer_params[:body], user_id: session[:user_id], question_id: request.referrer.split('/').last)
     # @answer = Answer.new(
     #   body: answer_params[:body],

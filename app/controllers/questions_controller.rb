@@ -12,11 +12,12 @@ class QuestionsController < ApplicationController
 
 
   def new
+    redirect_to login_path_url unless current_user
     @question = Question.new
-
   end
 
   def create
+    redirect_to login_path_url unless current_user
 
     @question = Question.create(title: question_params[:title],
                                 body: question_params[:body],
@@ -31,6 +32,8 @@ class QuestionsController < ApplicationController
   end
 
   def create_answer
+    redirect_to login_path_url unless current_user
+
     puts params.inspect
     puts :id
     @answer = Answer.create(  body: params[:body],

@@ -20,7 +20,7 @@ Rails.application.routes.draw do
 
 
 
-  get 'auth/login', to: "auths#login"
+  get "auth/login" => "auths#login", as: :login_path
   get 'auth/register', to: "auths#register"
   get 'profile/show', to: "profiles#show"
   get 'profile/my_answers', to: "profiles#my_answers" 

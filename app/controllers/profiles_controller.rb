@@ -1,20 +1,19 @@
 class ProfilesController < ApplicationController
-    # layout 'profile'
-  
+    
     def show
-      # Ваш код для отображения профиля
+        redirect_to login_path_url unless current_user
     end
   
     def my_questions
-      # Ваш код для показа всех вопросов пользователя
+        redirect_to login_path_url unless current_user
     end
   
     def my_answers
-      # Ваш код для показа всех ответов пользователя
+        redirect_to login_path_url unless current_user
     end
     
     def settings
-        # Ваш код для редактирования профиля
+        redirect_to login_path_url unless current_user
     end
   end
   

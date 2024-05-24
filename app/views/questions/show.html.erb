@@ -32,7 +32,7 @@
   </div>
 
   <section class="answer mt-0 flex flex-col border-collapse border border-slate-300">
-    <% unless @answers.nil? %>
+    <% unless @answers.present? %>
       <%  @answers.each do | a | %>
         <table class="bg-transparent text-[#222] text-xs leading-[135%] border-collapse w-full text-center" cellspacing="1">
           <tbody>
@@ -61,17 +61,21 @@
     <% else %>
       <p>Нет ответов на этот вопрос.</p>
     <% end %>
-
-
-    <label for="send_answer" class="bg-custom-gradient text-white text-base text-center">Написать ответ: </label>
-    <%= form_with url: '/answer/create', local: true, method: :post,  class: 'space-y-6' do %>
-          <div class="space-y-4">
-            <div class="field">
-              <%= text_area_tag 'answer[body]', nil, placeholder: "Напишите ваш ответ...", rows: 17, cols: 20, id: "send_answer", class: "w-full min-h-36 resize-y" %>
-            </div>
-
-            <%= submit_tag 'Отправить', class: 'w-full cursor-pointer px-8 py-2 rounded text-base bg-blue-300 hover:text-white hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300 transition duration-300 ease-in-out' %>
-          </div>
-        <% end %>
   </section>
+
+  <% if session[:user_id] %>
+    <section class="input_answer mt-0 flex flex-col border-collapse border border-slate-300">
+
+      <label for="send_answer" class="bg-custom-gradient text-white text-base text-center">Написать ответ: </label>
+      <%= form_with url: '/answer/create', local: true, method: :post,  class: 'space-y-6' do %>
+        <div class="space-y-4">
+          <div class="field">
+            <%= text_area_tag 'answer[body]', nil, placeholder: "Напишите ваш ответ...", rows: 17, cols: 20, id: "send_answer", class: "w-full min-h-36 resize-y" %>
+          </div>
+
+          <%= submit_tag 'Отправить', class: 'w-full cursor-pointer px-8 py-2 rounded text-base bg-blue-300 hover:text-white hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300 transition duration-300 ease-in-out' %>
+        </div>
+      <% end %>
+    </section>
+  <% end %>
 </main>
