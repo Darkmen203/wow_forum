@@ -26,6 +26,9 @@ Rails.application.routes.draw do
   get 'profile/my_answers', to: "profiles#my_answers" 
   get 'profile/my_questions', to: "profiles#my_questions"
   get 'profile/settings', to: "profiles#settings"
+
+
+  post '/uploads/create', to: "users#create_avatar_file"
   # Defines the root path route ("/")
   # root "posts#index"
 end
