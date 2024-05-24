@@ -21,4 +21,7 @@ Things you may want to cover:
 
 * Deployment instructions
 
-* ...
+* FOR start tests
+
+    rails db:schema:load
+    rails test
