@@ -1,6 +1,5 @@
 class User < ApplicationRecord
-  validates :id, :provider, :login, :token, presence: true
-  validates :id, uniqueness: { scope: :provider }
+  validates :provider, :login, :token, presence: true
   has_many :questions
   has_many :answers
 

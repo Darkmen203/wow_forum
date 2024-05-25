@@ -18,14 +18,21 @@ Rails.application.routes.draw do
   get '/auth/failure', to: redirect('/')
   get '/logout', to: 'sessions#destroy'
 
-
+  delete 'questions/destroy/:id', to: 'questions#destroy', as: 'destroy'
+  delete 'answers/destroy_ans/:id', to: 'answers#destroy', as: 'destroy_ans'
 
   get "auth/login" => "auths#login", as: :login_path
-  get 'auth/register', to: "auths#register"
-  get 'profile/show', to: "users#show"
-  get 'profile/my_answers', to: "users#my_answers" 
-  get 'profile/my_questions', to: "users#my_questions"
-  get 'profile/settings', to: "users#settings"
+  get '/auth/register', to: "auths#register", as: :register_path
+  post '/auth/create', to: "auths#create"
+  post 'auth/sign', to: "auths#sign"
+  post 'auth/change_password', to: "auths#change_password"
+
+  patch 'auths/update', to: 'auths#update', as: 'update_auths'
+
+  get 'profile/show', to: "profiles#show"
+  get 'profile/my_answers', to: "profiles#my_answers", as: :my_answers 
+  get 'profile/my_questions', to: "profiles#my_questions", as: :my_questions
+  get 'profile/settings', to: "profiles#settings"
 
 
   post '/uploads/create', to: "users#create_avatar_file"

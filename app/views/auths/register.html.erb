@@ -10,11 +10,11 @@
         </div>
       </div>
       <div class="p-6 pt-0">
-        <%= form_with url: 'auth/register', local: true, class: 'space-y-6' do %>
+        <%= form_with url: '/auth/create', model: @user, method: 'post', local: true, class: 'space-y-6' do %>
           <div class="space-y-4">
             <div class="space-y-2">
-              <label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" for="name">Имя</label>
-              <%= text_field_tag :name, nil, class: 'flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50', placeholder: 'Ваше имя...', id: 'name' %>
+              <label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" for="login">Логин</label>
+              <%= text_field_tag :login, nil, class: 'flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50', placeholder: 'Ваш логин...', id: 'login' %>
             </div>
             <div class="space-y-2">
               <label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" for="email">Почта</label>
