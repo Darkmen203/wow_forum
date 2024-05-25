@@ -51,12 +51,24 @@ class QuestionsController < ApplicationController
                               question_id: :id)
   end
 
+  def destroy
+    @question = Question.find_by(id: params[:id], user_id: current_user.id)
+    if @question
+      @question.destroy
+      flash[:notice] = "Вопрос успешно удалён."
+    else
+      flash[:alert] = "Вопрос не найден или у вас нет прав на его удаление."
+    end
+    redirect_to my_questions_path
+  end
 
   private
 
   def question_params
     params.require(:question).permit(:title, :body)
   end
+
+
 
 
 end
