@@ -1,7 +1,7 @@
 
 <div class="h-full w-full flex items-center text-center flex-col gap-2">
     <section class="name_profile w-40 pb-2">
-        <span class="font-bold text-base text-black">Darkmen203</span>
+        <span class="font-bold text-base text-black"><%= session[:name] %></span>
         <button class="w-5 h-5">
             <img src="/edit.svg" alt="изменить имя">
         </button>
@@ -15,7 +15,7 @@
                 <%= form.file_field :files, class: 'hidden', id: 'upload_new_avatar', accept: 'image/*', onchange: 'previewImage(event)' %>
 
                 <div class="container h-36 w-full relative">
-                    <img id="avatarPreview" class='group-hover/edit_file:opacity-70 w-full h-36 object-full hover:opacity-70 ' src="/mQ6093WS04sftZpfp7E5SJIyK9jym8dCz0RfxHKZd4XDz18z1.jpg" alt="" />
+                    <img id="avatarPreview" class='group-hover/edit_file:opacity-70 w-full h-36 object-full hover:opacity-70 ' src='<%= session[:avatar_url] %>' alt="" />
                 </div>
             </div>
             <div class='mt-4'>
@@ -24,7 +24,7 @@
         <% end %>
     </section>
     <section class="change_password w-64 border p-2 rounded">
-        <%= form_with url: 'auth/change_password', local: true, class: 'space-y-6' do %>
+        <%= form_with url: '/auth/change_password', local: true, class: 'space-y-6' do %>
             <div class="space-y-4">
                 <div class="space-y-2">
                     <label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" for="currentPassword">Текущий пароль</label>

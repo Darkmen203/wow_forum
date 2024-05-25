@@ -10,7 +10,7 @@
         </div>
       </div>
       <div class="p-6 pt-0">
-        <%= form_with url: 'auth/github', local: true, class: 'space-y-6' do %>
+        <%= form_with url: '/auth/sign', method: 'post', local: true, class: 'space-y-6' do |form|%>
           <div class="space-y-4">
             <div class="space-y-2">
               <label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" for="email">Почта</label>
@@ -24,14 +24,14 @@
                   <img src="/eye.svg" id="eyeIcon" alt="show_password" class="w-[1em] h-[1em]">
                 </span>
               </div>
-              <%= submit_tag 'Войти', class: 'cursor-pointer inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow h-9 px-4 py-2 w-full hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300 hover:text-background' %>
+              <%= form.submit 'Войти', class: 'cursor-pointer inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow h-9 px-4 py-2 w-full hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300 hover:text-background' %>
             </div>
           </div>
         <% end %>
       </div>
       <div class="flex items-center p-6 pt-0">
         <div class="flex items-center w-full gap-x-2">
-          <%= link_to '/auth/github', class: 'inline-flex items-center justify-center whitespace-nowrap font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input bg-background shadow-sm h-10 rounded-md px-8 w-full text-2xl hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300 hover:text-background' do %>
+          <%= link_to '/auth/github', data: { turbo_confirm: "Вы уверены?" },class: 'inline-flex items-center justify-center whitespace-nowrap font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input bg-background shadow-sm h-10 rounded-md px-8 w-full text-2xl hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300 hover:text-background' do %>
             <img src="/git.svg" alt="show_password" class="w-[1em] h-[1em]">
           <% end %>
         </div>

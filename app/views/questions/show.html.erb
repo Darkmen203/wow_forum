@@ -32,7 +32,7 @@
   </div>
 
   <section class="answer mt-0 flex flex-col border-collapse border border-slate-300">
-    <% unless @answers.present? %>
+    <% unless !@answers.present? %>
       <%  @answers.each do | a | %>
         <table class="bg-transparent text-[#222] text-xs leading-[135%] border-collapse w-full text-center" cellspacing="1">
           <tbody>

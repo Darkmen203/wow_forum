@@ -1,16 +1,24 @@
 
 <div class="h-full w-full flex items-center text-center flex-col">
     <section class="name_profile w-40 pb-2">
-        <span class="font-bold text-base text-black">Darkmen203</span>
+        <span class="font-bold text-base text-black"><%= session[:name] %></span>
 
     </section>
     <section class="image_profile w-40">
-        <img src="/mQ6093WS04sftZpfp7E5SJIyK9jym8dCz0RfxHKZd4XDz18z1.jpg" class="w-full" alt="your picture">
+        <img src='<%= session[:avatar_url] %>' class="w-full" alt="your picture">
     </section>
     <section class="status">
-        <# Регистрация %>
-        <# Количество постов %>
-        <# Репутация? %>
-        <# Количество ответов %>
+        <div>
+            <span>Зарегистрирован: <%= @user.created_at.strftime("%d.%m.%Y %H:%M") %></span>
+        </div>
+        <div>
+            <span>Количество постов: <%= Question.where(user_id: session[:user_id]).count() %></span>
+        </div>
+        <div>
+            <span>Репутация: <%= @user.reputation %></span>
+        </div>
+        <div>
+            <span>Количество ответов: <%= Answer.where(user_id: session[:user_id]).count() %></span>
+        </div>
     </section>
 </div>
