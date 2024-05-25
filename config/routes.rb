@@ -26,6 +26,9 @@ Rails.application.routes.draw do
   post '/auth/create', to: "auths#create"
   post 'auth/sign', to: "auths#sign"
   post 'auth/change_password', to: "auths#change_password"
+
+  patch 'auths/update', to: 'auths#update', as: 'update_auths'
+
   get 'profile/show', to: "profiles#show"
   get 'profile/my_answers', to: "profiles#my_answers", as: :my_answers 
   get 'profile/my_questions', to: "profiles#my_questions", as: :my_questions

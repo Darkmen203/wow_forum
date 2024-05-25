@@ -60,4 +60,25 @@ class AuthsController < ApplicationController
       # redirect_to root_path
     end
 
+    def update
+      @user = User.find(session[:user_id])
+      if user_params[:name] != '' and user_params[:name].present? and user_params[:name].length < 30
+        if @user.update(user_params)
+          flash[:notice] = "Имя успешно обновлено."
+          session[:name] = user_params[:name]
+          redirect_to request.referer
+        else
+          flash[:alert] = "Не удалось обновить имя."
+          render :edit
+        end
+      else
+        flash[:alert] = "Недопустимое имя."
+        redirect_to request.referer
+      end
+    end
+
+    def user_params
+      params.require(:user).permit(:name)
+    end
+
   end
