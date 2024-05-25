@@ -2,7 +2,7 @@ class AuthsController < ApplicationController
 
     def create
       if params[:password] == params[:password_confirmation]
-        if User.find_by_login(params[:login]).present?
+        if !User.find_by_login(params[:login]).present? and params[:login] != ''
           u = User.create(
             provider: 'wowforum',
             password: params[:password],
@@ -31,7 +31,7 @@ class AuthsController < ApplicationController
 
     def sign
       u = User.find_by(password: params[:password], email: params[:email])
-      if not u.present?
+      if u.present?
         session[:user_id] = u.id
         session[:avatar_url] = u.avatar_url
         session[:name] = u.name
