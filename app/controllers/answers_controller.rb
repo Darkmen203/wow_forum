@@ -19,6 +19,16 @@ class AnswersController < ApplicationController
     end 
   end
 
+  def destroy
+    @answer = Answer.find_by(id: params[:id], user_id: current_user.id)
+    if @answer
+      @answer.destroy
+      flash[:notice] = "Ответ успешно удалён."
+    else
+      flash[:alert] = "Ответ не найден или у вас нет прав на его удаление."
+    end
+  end
+
   private
 
   def answer_params

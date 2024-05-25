@@ -6,7 +6,8 @@ class ProfilesController < ApplicationController
     end
   
     def my_questions
-        redirect_to login_path_url unless current_user
+        return redirect_to login_path_url unless current_user
+        @question = Question.where(user_id: session[:user_id])
     end
   
     def my_answers
