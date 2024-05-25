@@ -12,6 +12,7 @@ class ProfilesController < ApplicationController
   
     def my_answers
         redirect_to login_path_url unless current_user
+        @answer = Answer.where(user_id: session[:user_id])
     end
     
     def settings

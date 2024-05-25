@@ -27,6 +27,7 @@ class AnswersController < ApplicationController
     else
       flash[:alert] = "Ответ не найден или у вас нет прав на его удаление."
     end
+    redirect_to my_answers_path
   end
 
   private
