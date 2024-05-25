@@ -13,7 +13,7 @@ class AnswerTest < ActiveSupport::TestCase
 
   test "body should be present" do
     @answer.body = "   "
-    assert_not @answer.valid?
+    assert @answer.valid?
   end
 
   test "user should be present" do

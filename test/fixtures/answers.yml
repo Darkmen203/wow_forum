@@ -1,9 +1,15 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+answer_one:
+  id: 1
+  body: "Rails is a web application framework."
+  user_id: 1
+  question_id: 1
+  created_at: <%= 9.days.ago %>
+  updated_at: <%= 9.days.ago %>
 
-one:
-  title: MyString
-  body: MyText
-
-two:
-  title: MyString
-  body: MyText
+answer_two:
+  id: 2
+  body: "Ensure your foreign keys point to valid records."
+  user_id: 2
+  question_id: 2
+  created_at: <%= 4.days.ago %>
+  updated_at: <%= 4.days.ago %>

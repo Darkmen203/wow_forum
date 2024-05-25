@@ -1,9 +1,15 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+question_one:
+  id: 1
+  title: "First Question"
+  body: "What is Ruby on Rails?"
+  user_id: 1
+  created_at: <%= 10.days.ago %>
+  updated_at: <%= 10.days.ago %>
 
-one:
-  title: MyString
-  body: MyText
-
-two:
-  title: MyString
-  body: MyText
+question_two:
+  id: 2
+  title: "Second Question"
+  body: "How to fix foreign key violations?"
+  user_id: 2
+  created_at: <%= 5.days.ago %>
+  updated_at: <%= 5.days.ago %>
