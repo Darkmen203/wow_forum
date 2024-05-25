@@ -1,87 +1,43 @@
 <div class="h-full w-full">
-  <div class="m-0 mt-2 p-0 bg-white rounded border border-[#2982cc]">
-    <table class="bg-transparent text-[#222] text-xs leading-[135%] border-collapse w-full text-center" cellspacing="1">
-      <tbody>
-        <tr>
-          <td class="bg-blue-100 break-words border-r border-white" style="min-width:160px" id="ph-124018197-d1">
-            <span class="font-bold text-xs text-black">
-                Darkmen203
-                <%# <%= @question.user.login %>
-            </span>
-          </td>
-          <td class="bg-blue-100 break-words py-1" width="99%">
-            21.05.2024 19:47:25
-            <%# <%= @question.created_at.strftime("%Y.%m.%d %H:%M:%S") %>
-          </td>
-        </tr>
-        <tr>
-          <td valign="top" class="bg-slate-50 border-r text-center py-2 pb-4 border-white">
-            <img src="/mQ6093WS04sftZpfp7E5SJIyK9jym8dCz0RfxHKZd4XDz18z1.jpg" class="border-none mx-auto" alt="">
-          </td>
-          <td width="100%" valign="top" class="pt-2 bg-slate-50">
-            <div>
-              <span>
-                Вот такая у меня проблема пацаны
-                <%# <!-- Тело сообщения -->
-                <%= @question.body %>
-              </span>
-            </div>
-          </td>
-        </tr>
-        <tr>
-        <td class="bg-blue-100 break-words "></td>
-        <td class="bg-blue-100 break-words p-2">
-            Вопрос: <a href="https://4pda.to/forum/index.php?showforum=1115">Опа вопросик</a>
-            · Просмотр сообщения: <a href="/posts/#sadfasdf" class="linkthru">#128374093</a>
-            <div class=" h-[1em] leading-[1] inline-block" style="float:right">
-            <a class=" bg-custom-gradient text-[#326b92] px-2 py-1 rounded" href="#" title="Удалить пост">УДАЛИТЬ</a>
-            </div>
-        </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
- <div class="m-0 mt-2 p-0 bg-white rounded border border-[#2982cc]">
-
-    <table class="bg-transparent text-[#222] text-xs leading-[135%] border-collapse w-full text-center" cellspacing="1">
-      <tbody>
-        <tr>
-          <td class="bg-blue-100 break-words border-r border-white" style="min-width:160px" id="ph-124018197-d1">
-            <span class="font-bold text-xs text-black">
-                Darkmen203
-                <%# <%= @question.user.login %>
-            </span>
-          </td>
-          <td class="bg-blue-100 break-words py-1" width="99%">
-            21.05.2024 19:47:25
-            <%# <%= @question.created_at.strftime("%Y.%m.%d %H:%M:%S") %>
-          </td>
-        </tr>
-        <tr>
-          <td valign="top" class="bg-slate-50 border-r text-center py-2 pb-4 border-white">
-            <img src="/mQ6093WS04sftZpfp7E5SJIyK9jym8dCz0RfxHKZd4XDz18z1.jpg" class="border-none mx-auto" alt="">
-          </td>
-          <td width="100%" valign="top" class="pt-2 bg-slate-50">
-            <div>
-              <span>
-                Вот такая у меня проблема пацаны
-                <%# <!-- Тело сообщения -->
-                <%= @question.body %>
-              </span>
-            </div>
-          </td>
-        </tr>
-        <tr>
-        <td class="bg-blue-100 break-words "></td>
-        <td class="bg-blue-100 break-words p-2">
-            Форум: <a href="https://4pda.to/forum/index.php?showforum=1115">Realme</a>
-            · Просмотр сообщения: <a href="https://4pda.to/forum/index.php?showtopic=1073158&amp;view=findpost&amp;p=128374093" class="linkthru">#128374093</a>
-            <div class=" h-[1em] leading-[1] inline-block" style="float:right">
-            <a class=" bg-custom-gradient text-[#326b92] px-2 py-1 rounded" href="#" title="Удалить пост">УДАЛИТЬ</a>
-            </div>
-        </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+  <% unless !@question.present? %>
+    <%   @question.each do |quest| %>
+      <div class="m-0 mt-2 p-0 bg-white rounded border border-[#2982cc]"> 
+        <table class="bg-transparent text-[#222] text-xs leading-[135%] border-collapse w-full text-center" cellspacing="1">
+          <tbody>
+            <tr>
+              <td class="bg-blue-100 break-words border-r border-white" style="min-width:160px" id="ph-124018197-d1">
+                <span class="font-bold text-xs text-black">
+                  <%= quest.user.name %>
+                </span>
+              </td>
+              <td class="bg-blue-100 break-words py-1" width="99%">
+                  <%= quest.created_at.strftime("%Y.%m.%d %H:%M:%S") %>
+              </td>
+            </tr>
+            <tr>
+              <td valign="top" class="bg-slate-50 border-r text-center py-2 pb-4 border-white">
+                <img src="/mQ6093WS04sftZpfp7E5SJIyK9jym8dCz0RfxHKZd4XDz18z1.jpg" class="border-none mx-auto" alt="">
+              </td>
+              <td width="100%" valign="top" class="pt-2 bg-slate-50">
+                <div>
+                  <span>
+                    <%= quest.body %>
+                  </span>
+                </div>
+              </td>
+            </tr>
+            <tr>
+            <td class="bg-blue-100 break-words "></td>
+            <td class="bg-blue-100 break-words p-2">
+                Вопрос: <a href='<%= "/questions/" + quest.id.to_s %>'> <%= quest.title %></a>
+                <div class=" h-[1em] leading-[1] inline-block" style="float:right">
+                <%= button_to 'Удалить', destroy_path(quest), method: :delete, data: { confirm: 'Вы уверены, что хотите удалить этот вопрос?' }, class: 'btn btn-danger' %>
+                </div>
+            </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    <% end %>
+  <% end %>
 </div>
