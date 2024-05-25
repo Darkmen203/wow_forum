@@ -44,7 +44,6 @@ class QuestionsController < ApplicationController
   def destroy
     @question = Question.find_by(id: params[:id], user_id: current_user.id)
     if @question
-      @question.answers.destroy_all
       @question.destroy
       flash[:notice] = "Вопрос успешно удалён."
     else
