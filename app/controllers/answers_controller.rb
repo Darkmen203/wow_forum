@@ -5,20 +5,18 @@ class AnswersController < ApplicationController
 
   def create
     redirect_to login_path_url unless current_user
-    @answer = Answer.create(body: answer_params[:body], user_id: session[:user_id], question_id: request.referrer.split('/').last)
-    # @answer = Answer.new(
-    #   body: answer_params[:body],
-    #   user_id: session[:user_id],
-    #   question_id: params[:question_id]
-    # )
-    # puts '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n#FF0000'
-    # puts request.referrer.split('/').last
-    # puts @answer.user_id
-    # puts @answer.body 
-    if @answer.save
-      redirect_to question_path(@answer.question_id), notice: "Ответ успешно создан."
+    if(answer_params[:body] != "" and answer_params[:body].present?)
+      @answer = Answer.create(body: answer_params[:body], user_id: session[:user_id], question_id: request.referrer.split('/').last)
+      if @answer.save
+        redirect_to question_path(@answer.question_id), notice: "Ответ успешно создан."
+      else
+        flash[:alert] = "Ошибка! ответ не создан"
+        redirect_to request.referer
+      end
     else
-    end
+      flash[:alert] = "Ошибка! Вам нужно написать сообщение"
+      redirect_to request.referer
+    end 
   end
 
   private
