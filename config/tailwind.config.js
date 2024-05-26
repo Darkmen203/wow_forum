@@ -21,6 +21,10 @@ module.exports = {
       height: {
         'screen-without-header': 'calc(100vh-2.5rem)',
       },
+      backgroundColor: {
+        'btn-color': 'rgb(150, 216, 253)',
+        'formTitle': 'rgb(242, 205, 255)',
+      },
     },
   },
   plugins: [

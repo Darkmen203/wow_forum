@@ -1,13 +1,13 @@
 
-<div class="h-full w-full flex items-center text-center flex-col">
+<div class="h-full w-full flex items-center text-center flex-col gap-12">
     <section class="name_profile w-40 pb-2">
-        <span class="font-bold text-base text-black"><%= session[:name] %></span>
+        <span class="font-bold text-2xl text-black"><%= session[:name] %></span>
 
     </section>
-    <section class="image_profile w-40">
+    <section class="image_profile w-64 h-64">
         <img src='<%= session[:avatar_url] %>' class="w-full" alt="your picture">
     </section>
-    <section class="status">
+    <section class="status shadow-lg rounded-2xl bg-formTitle px-7 py-8 text-2xl">
         <div>
             <span>Зарегистрирован: <%= @user.created_at.strftime("%d.%m.%Y %H:%M") %></span>
         </div>

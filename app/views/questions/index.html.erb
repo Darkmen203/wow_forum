@@ -1,16 +1,35 @@
 <main class="my-2 p-2 container mx-auto">
-    <div class="title flex justify-between text-lg mx-auto font-medium pb-2 px-4 border-collapse border-b border-black" role="title">
-        <h2>Questions</h2>
+    <div class="title flex justify-between text-lg mx-auto font-medium py-2 pb-4 px-4 border-collapse border-b border-black" role="title">
+        <div class="inline-flex items-center justify-center">
+            <h2 class="pb-1.5 ">Questions</h2>
+            <hr class="w-64 h-[0.06rem] bg-black ml-5 border-0 rounded dark:bg-gray-700">
+        </div>
         <% if session[:user_id] %>
-            <%= link_to 'Создать вопрос', '/new', class: 'px-8 rounded hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300 transition duration-300 ease-in-out h-full' %>
+            <%= link_to 'Создать вопрос', '/new', style: 'box-shadow: inset 0rem 0.13rem 0.25rem 0rem rgba(0, 0, 0, 0.25);' , class: ' px-8 h-9 align-middle flex items-center bg-btn-color rounded-2xl hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300 transition duration-300 ease-in-out text-center' %>
         <% end %>
     </div>
     <table class="my-4 min-w-full text-sm font-light text-surface text-center">
         <thead class="border-b border-neutral-200 font-medium dark:border-white/10">
             <tr>
-                <th class="px-6 py-4">Author</th>
-                <th class="px-6 py-4">Question</th>
-                <th class="px-6 py-4">Date</th>
+                <th class="px-6 py-4">
+                    <div class="inline-flex items-center justify-center w-full relative">
+                        <hr class="w-64 h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
+                        <span class="absolute px-3 font-medium text-gray-900 -translate-x-1/2 bg-white left-1/2">Author</span>
+                    </div>
+                    
+                </th>
+                <th class="px-6 py-4">
+                    <div class="inline-flex items-center justify-center w-full relative">
+                        <hr class="w-64 h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
+                        <span class="absolute px-3 font-medium text-gray-900 -translate-x-1/2 bg-white left-1/2">Question</span>
+                    </div>
+                </th>
+                <th class="px-6 py-4">
+                    <div class="inline-flex items-center justify-center w-full relative">
+                        <hr class="w-64 h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
+                        <span class="absolute px-3 font-medium text-gray-900 -translate-x-1/2 bg-white left-1/2">Date</span>
+                    </div>
+                </th>
             </tr>
         </thead>
         <tbody>
