@@ -1,9 +1,23 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+user_one:
+  id: 1
+  login: "user_one"
+  password: "password1"
+  avatar_url: "http://example.com/avatar1.png"
+  token: "token1"
+  uid: "uid1"
+  provider: "provider1"
+  name: "User One"
+  email: "user_one@example.com"
+  reputation: 10
 
-one:
-  login: MyString
-  password: MyString
-
-two:
-  login: MyString
-  password: MyString
+user_two:
+  id: 2
+  login: "user_two"
+  password: "password2"
+  avatar_url: "http://example.com/avatar2.png"
+  token: "token2"
+  uid: "uid2"
+  provider: "provider2"
+  name: "User Two"
+  email: "user_two@example.com"
+  reputation: 20

@@ -1,20 +1,20 @@
 class UsersController < ApplicationController
     
     # Other user actions...
-    def show 
-
+    def show
+        # redirect_to login_path_url unless current_user
     end
-
-    def edit 
-
+  
+    def my_questions
+        # redirect_to login_path_url unless current_user
+    end
+  
+    def my_answers
+        # redirect_to login_path_url unless current_user
     end
     
-    def update 
-
-    end
-    
-    def destroy 
-
+    def settings
+        # redirect_to login_path_url unless current_user
     end
     
     def create_avatar_file
