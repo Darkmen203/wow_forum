@@ -43,12 +43,15 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address: 'ssl://smtp.mail.ru',
+    address: 'smtp.mail.ru',
     port: 465,
     domain: 'mail.ru',
-    user_name: 'fordevprojectrussia@mail.ru',
-    password: 'piuwNQPez361JshLxXqh',
-
+    user_name: ENV['MAILER_USERNAME'],
+    password: ENV['MAILER_PASSWORD'],
+    authentication: 'plain',
+    enable_starttls_auto: true,
+    ssl: true,
+    tls: true
   }
 
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
