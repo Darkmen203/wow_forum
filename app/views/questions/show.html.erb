@@ -1,28 +1,28 @@
 <main class="my-2 p-2 container mx-auto flex justify-center flex-col">
-  <%= link_to 'Back to Questions', questions_path, class: 'px-8 py-2 text-center rounded text-base hover:text-white hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300 transition duration-300 ease-in-out' %>
-  <div class="m-0 mt-2 p-0 bg-white rounded border border-[#2982cc]">
-    <div class="bg-custom-gradient border-none border-b border-[#5176b5] text-white text-xs font-bold m-0 p-1">
-      <h2 class="flex align-middle items-center text-lg">
-        <img src="/mQ60T6PpnAMqc37AQkz1pz2hhDpbwVBz0PCsiEN5z2d.gif" class="border-none inline-block" alt=">" width="8" height="36">&nbsp;<%= @question.title %>
-      </h2>
+  <%= link_to 'Back to Questions', questions_path, style: "box-shadow: inset 0rem 0.13rem 0.25rem 0rem rgba(0, 0, 0, 0.25)", class: "text-lg w-1/5 mx-auto flex justify-center items-center shadow-btnEffect px-8 h-9 align-middle bg-btn-color rounded-2xl hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300 transition duration-300 ease-in-out text-center" %>
+  <div class="rounded-xl mt-6 shadow-lg bg-btn-color/60">
+      <div class=" h-1.75 bg-white mx-3 mt-3 py-2 px-4 flex items-center rounded-t-xl shadow-lg">
+        <img src="/quest.svg" class="w-8 h-8 border-none inline-block" alt="?">
+        <h2 class="text-3xl flex justify-center pb-1.5 pl-2 align-middle items-center">
+          <%= @question.title %>
+        </h2>      
     </div>
-    <table class="bg-transparent text-[#222] text-xs leading-[135%] border-collapse w-full text-center" cellspacing="1">
+    <table class="bg-transparent mx-3 rounded-xl leading-[135%] border-collapse text-center" cellspacing="1">
       <tbody>
         <tr>
-          <td class="bg-blue-100 break-words border-r border-white" style="min-width:160px" id="ph-124018197-d1">
-            <span class="font-bold text-xs text-black"><%= @question.user.login %></span>
+          <td class="bg-formTitle rounded-bl-xl shadow-lg break-words border-r-2 border-white min-w-40">
+            <span class="font-bold text-sm text-black"><%= @question.user.login %></span>
           </td>
-          <td class="bg-blue-100 break-words py-1" width="99%">
+          <td class="bg-formTitle rounded-br-xl shadow-lg break-words py-1" width="99%">
             <%= @question.created_at.strftime("%Y.%m.%d %H:%M:%S") %>
           </td>
         </tr>
         <tr>
-          <td valign="top" class="bg-slate-50 border-r text-center py-2 pb-4 border-white">
-            <img src="/mQ6093WS04sftZpfp7E5SJIyK9jym8dCz0RfxHKZd4XDz18z1.jpg" class="border-none mx-auto" alt="">
+          <td valign="top" class="border-r text-center py-2 pb-4 border-white">
+            <img src="<%= @question.user.avatar_url %>" class="border-none w-16 h-16 mx-auto" alt="user_avatar">
           </td>
-          <td width="100%" valign="top" class="pt-2 bg-slate-50">
+          <td width="100%" valign="top" class="pt-2 text-left text-xl px-4">
             <div>
-              <!-- Тело сообщения -->
               <span><%= @question.body %></span>
             </div>
           </td>
@@ -31,49 +31,62 @@
     </table>
   </div>
 
-  <section class="answer mt-0 flex flex-col border-collapse border border-slate-300">
+  <section class="answer mt-0 flex flex-col">
     <% unless !@answers.present? %>
       <%  @answers.each do | a | %>
-        <table class="bg-transparent text-[#222] text-xs leading-[135%] border-collapse w-full text-center" cellspacing="1">
-          <tbody>
-            <tr>
-              <td class="bg-blue-100 break-words border-r border-white" style="min-width:160px" id="ph-124018197-d1">
-                <span class="font-bold text-xs text-black"><%= a.user.login %></span>
-              </td>
-              <td class="bg-blue-100 break-words py-1" width="99%">
-                <%= a.created_at.strftime("%Y.%m.%d %H:%M:%S") %>
-              </td>
-            </tr>
-            <tr>
-              <td valign="top" class="bg-slate-50 border-r text-center py-2 pb-4 border-white">
-                <img src="/mQ6093WS04sftZpfp7E5SJIyK9jym8dCz0RfxHKZd4XDz18z1.jpg" class="border-none mx-auto" alt="">
-              </td>
-              <td width="100%" valign="top" class="pt-2 bg-slate-50">
-                <div>
-                  <!-- Тело сообщения -->
-                  <span><%= a.body %></span>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="rounded-xl mt-6 py-2 shadow-lg bg-btn-color/60">
+          <table class="bg-transparent mx-3 rounded-xl leading-[135%] border-collapse text-center" cellspacing="1">
+            <tbody>
+              <tr>
+                <td class="bg-formTitle rounded-l-xl shadow-lg break-words border-r-2 border-white min-w-40">
+                  <span class="font-bold text-sm text-black"><%= a.user.login %></span>
+                </td>
+                <td class="bg-formTitle rounded-r-xl shadow-lg break-words py-1" width="99%">
+                  <%= a.created_at.strftime("%Y.%m.%d %H:%M:%S") %>
+                </td>
+              </tr>
+              <tr>
+                <td valign="top" class="border-r text-center py-2 pb-4 border-white">
+                  <img src="<%= a.user.avatar_url %>" class="border-none w-16 h-16 mx-auto" alt="user_avatar">
+                </td>
+                <td width="100%" valign="top" class="pt-2 text-left text-xl px-4">
+                  <div>
+                    <span><%= a.body %></span>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
       <%  end %>
     <% else %>
-      <p>Нет ответов на этот вопрос.</p>
+      <div class="rounded-xl mt-6 shadow-lg bg-btn-color/60">
+          <table class="w-full bg-transparent mx-3 rounded-xl leading-[135%] border-collapse text-center"
+              cellspacing="1">
+              <tbody>
+                  <tr>
+                      <td width="100%" valign="top" class="p-2 text-center text-xl px-4">
+                          <span>Нет ответов на этот вопрос.</span>
+                      </td>
+                  </tr>
+              </tbody>
+          </table>
+      </div>
     <% end %>
   </section>
 
   <% if session[:user_id] %>
-    <section class="input_answer mt-0 flex flex-col border-collapse border border-slate-300">
+    <section class="input_answer mt-10 flex flex-col border border-black/10 pb-2 rounded-xl">
 
-      <label for="send_answer" class="bg-custom-gradient text-white text-base text-center">Написать ответ: </label>
-      <%= form_with url: '/answer/create', local: true, method: :post,  class: 'space-y-6' do %>
+      <label for="send_answer" class="bg-formTitle shadow-xl p-1.5 rounded-t-xl text-2xl text-center">Написать ответ: </label>
+      <%= form_with url: '/answer/create', local: true, method: :post,  class: 'space-y-6 mx-3' do %>
         <div class="space-y-4">
           <div class="field">
-            <%= text_area_tag 'answer[body]', nil, placeholder: "Напишите ваш ответ...", rows: 17, cols: 20, id: "send_answer", class: "w-full min-h-36 resize-y" %>
+            <%= text_area_tag 'answer[body]', nil, placeholder: "Напишите ваш ответ...", rows: 17, cols: 20, id: "send_answer", class: "w-full border shadow-lg box-border p-4 min-h-36 resize-y" %>
           </div>
 
-          <%= submit_tag 'Отправить', class: 'w-full cursor-pointer px-8 py-2 rounded text-base bg-blue-300 hover:text-white hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300 transition duration-300 ease-in-out' %>
+          <%= submit_tag 'Отправить', style: "box-shadow: inset 0rem 0.13rem 0.25rem 0rem rgba(0, 0, 0, 0.25)", class: "cursor-pointer mx-auto px-8 w-3/4 h-20 text-2xl align-middle flex items-center justify-center bg-formTitle rounded-2xl hover:bg-btn-color active:bg-btn-color focus:outline-none focus:ring focus:ring-btn-color transition duration-300 ease-in-out text-center" %>
         </div>
       <% end %>
     </section>

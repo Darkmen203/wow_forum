@@ -1,19 +1,22 @@
-<h1>New Question</h1>
+<div class="inline-flex items-center justify-center w-full relative">
+    <hr class="w-64 h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
+    <h1 class="absolute px-3 pb-1.5 font-medium text-gray-900 -translate-x-1/2 bg-white left-1/2 text-xl">Новый вопрос</h1>
+</div>
 
-<%= form_with(model: @question, url: '/create') do |form| %>
+<%= form_with(model: @question, url: '/create', class: 'text-lg rounded-xl shadow-lg gap-10 py-10 bg-btn-color/40 flex flex-col items-center justify-center text-center mx-auto w-2/4') do |form| %>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
+  <div class="field flex flex-col w-1/3">
+    <%= form.label :title, class: "text-black/50 pb-2" %>
+    <%= form.text_field :title, class: 'box-border rounded-xl pl-1' %>
   </div>
 
-  <div class="field">
-    <%= form.label :body %>
-    <%= form.text_area :body %>
+  <div class="field flex flex-col w-1/3">
+    <%= form.label :body, class: "text-black/50 pb-2" %>
+    <%= form.text_area :body, class: 'box-border rounded-xl pl-1' %>
   </div>
 
   <div class="actions">
-    <%= form.submit class: 'px-8 py-2 text-center rounded text-base hover:text-white hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300 transition duration-300 ease-in-out' %>
+    <%= form.submit class: 'cursor-pointer shadow-btnEffect px-8 h-9 align-middle flex items-center bg-btn-color rounded-2xl hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300 transition duration-300 ease-in-out text-center', style: 'box-shadow: inset 0rem 0.13rem 0.25rem 0rem rgba(0, 0, 0, 0.25);' %>
   </div>
 
 <% end %>
