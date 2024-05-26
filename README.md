@@ -1,27 +1,50 @@
-# README
+The setups steps expect following tools installed on the system.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+- Github
+- Ruby [3.3.1]
+- Rails [7.1.3.3]
 
-Things you may want to cover:
+##### 1. Check out the repository
 
-* Ruby version
+```bash
+git clone https://github.com/Darkmen203/wow_forum.git  
+```
 
-* System dependencies
+##### 2. Prepare to work
 
-* Configuration
+Run the following commands to setup project.
 
-* Database creation
+```ruby
+bundle install
+rails tailwindcss:build
+```
 
-* Database initialization
 
-* How to run the test suite
+##### 3. Create and setup the database
 
-* Services (job queues, cache servers, search engines, etc.)
+Run the following commands to create and setup the database.
 
-* Deployment instructions
+```ruby
+rails db:create
+rails db:migrate
+rails db:seed
+```
 
-* FOR start tests
+##### 4. Run tests
 
-    rails db:schema:load
-    rails test
+Run the following commands to start tests.
+
+```ruby
+rails db:schema:load
+rails test
+```
+
+##### 5. Start the Rails server
+
+You can start the rails server using the command given below.
+
+```ruby
+rails server
+```
+
+And now you can visit the site with the URL http://localhost:3000
