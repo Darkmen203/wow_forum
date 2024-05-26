@@ -7,6 +7,10 @@ Rails.application.routes.draw do
   root 'questions#index'
   resources :questions
   resources :answers
+  # resources :password_resets, only: [:new, :create, :edit, :update]
+  get "/password_reset/new", to: "password_resets#new"
+  post "/password_reset/create", to: "password_resets#create"
+  get "/password_reset/succes", to: "password_resets#succes", as: "succes"
 
   get '/new', to: 'questions#new'
   post '/create', to: 'questions#create'
@@ -33,6 +37,8 @@ Rails.application.routes.draw do
   get 'profile/my_answers', to: "profiles#my_answers", as: :my_answers 
   get 'profile/my_questions', to: "profiles#my_questions", as: :my_questions
   get 'profile/settings', to: "profiles#settings"
+  get "/password_resets/", to: "password_resets#pass_form"
+  post "/change_pass_final/", to: "password_resets#change_pass_final"
 
 
   post '/uploads/create', to: "users#create_avatar_file"

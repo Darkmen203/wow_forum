@@ -2,7 +2,7 @@ class AuthsController < ApplicationController
 
     def create
       if params[:password] == params[:password_confirmation]
-        if !User.find_by_login(params[:login]).present? and params[:login] != ''
+        if !User.find_by(login: params[:login], email: params[:email]).present? and params[:login] != ''
           u = User.create(
             provider: 'wowforum',
             password: params[:password],

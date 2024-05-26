@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_25_142357) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_26_103448) do
   create_table "answers", force: :cascade do |t|
     t.text "body"
     t.datetime "created_at", null: false
@@ -56,6 +56,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_25_142357) do
     t.string "name"
     t.string "email"
     t.integer "reputation", default: 0, null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
   end
 
   add_foreign_key "answers", "questions", on_delete: :cascade

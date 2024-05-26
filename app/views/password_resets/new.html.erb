@@ -1,0 +1,17 @@
+<h1>Email form</h1>
+
+<%= form_with(model: @user, url: '/password_reset/create') do |form| %>
+
+  <div class="field">
+    <%= form.label :email_field %>
+    <%= form.text_field :email_field %>
+  </div>
+
+
+  <div class="actions">
+    <%= form.submit class: 'px-8 py-2 text-center rounded text-base hover:text-white hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300 transition duration-300 ease-in-out' %>
+  </div>
+
+<% end %>
+
+
