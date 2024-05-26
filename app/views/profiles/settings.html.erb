@@ -1,29 +1,31 @@
-<dialog id="changeNameDialog">
-  <h2>Изменить имя</h2>
-  <%= form_with url: '/auths/update', id:"changeNameForm",method:'patch', local: true do |form| %>
-    <label for="newNameInput">Новое имя:</label><br>
-    <%= form.text_field name="user[name]", id: "newNameInput", class: 'flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50', placeholder: 'Напишите новое имя' %>
-    <%= form.submit "Сохранить", class: 'cursor-pointer inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow h-9 px-4 py-2 w-full hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300 hover:text-background' %>
-    <button type="button" id="closeDialogButton" onclick ="openEditNameDialog(false)">Отмена</button>
+<dialog id="changeNameDialog" class="rounded-lg w-72 shadow-lg">
+  <h2 class="w-full bg-formTitle p-2" >Изменить имя</h2>
+  <%= form_with url: '/auths/update', class: "pb-2 px-2 space-y-7", id:"changeNameForm",method:'patch', local: true do |form| %>
+    <div class="field flex flex-col w-full text-center">
+        <label for="newNameInput" >Новое имя:</label>
+        <%= form.text_field name="user[name]", id: "newNameInput", class: 'flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50', placeholder: 'Напишите новое имя' %>
+    </div>
+    <%= form.submit "Сохранить", style: "box-shadow: inset 0rem 0.13rem 0.25rem 0rem rgba(0, 0, 0, 0.25)", class: "cursor-pointer mx-auto px-8 w-full h-9 text-xl align-middle flex items-center justify-center bg-formTitle rounded-2xl hover:bg-btn-color active:bg-btn-color focus:outline-none focus:ring focus:ring-btn-color transition duration-300 ease-in-out text-center" %>
+    <button type="button" style="box-shadow: inset 0rem 0.13rem 0.25rem 0rem rgba(0, 0, 0, 0.25)" class="cursor-pointer mx-auto px-8 w-3/4 h-9 text-xl align-middle flex items-center justify-center bg-formTitle rounded-2xl hover:bg-btn-color active:bg-btn-color focus:outline-none focus:ring focus:ring-btn-color transition duration-300 ease-in-out text-center" id="closeDialogButton" onclick ="openEditNameDialog(false)">Отмена</button>
     <% end %>
 </dialog>
-<div class="h-full w-full flex items-center text-center flex-col gap-2">
+<div class="h-full w-full flex text-2xl items-center text-center flex-col gap-2">
     <section class="name_profile w-40 pb-2">
-        <span class="font-bold text-base text-black"><%= session[:name] %></span>
+        <span class="font-bold text-black"><%= session[:name] %></span>
         <button onclick ="openEditNameDialog(true)" id="changeNameButton" class="w-5 h-5">
             <img src="/edit.svg" onclick ="openEditNameDialog(true)" alt="изменить имя">
         </button> 
     </section>
-    <section class="image_profile_settings w-64 border p-2 rounded">
+    <section class="image_profile_settings w-72 border p-2 rounded">
         <%= form_with url: '/uploads/create', local: true do |form| %>
-            <div class="edit_file group/edit_file w-40 text-center mx-auto h-46 relative bottom-0">
+            <div class="edit_file group/edit_file w-64 text-center mx-auto h-64 relative bottom-0">
                 <label for='upload_new_avatar' class='editbutton group-hover/edit_file:opacity-100 z-50 opacity-0 absolute inset-1/2 -translate-x-1/2 -translate-y-1/2 h-36 w-full hover:opacity-100 flex items-center justify-center cursor-pointer'>
                     <img class="w-8 h-8" src="/edit.svg" alt="изменить имя">
                 </label>
                 <%= form.file_field :files, class: 'hidden', id: 'upload_new_avatar', accept: 'image/*', onchange: 'previewImage(event)' %>
 
-                <div class="container h-36 w-full relative">
-                    <img id="avatarPreview" class='group-hover/edit_file:opacity-70 w-full h-36 object-full hover:opacity-70 ' src='<%= session[:avatar_url] %>' alt="" />
+                <div class="container h-64 w-full relative">
+                    <img id="avatarPreview" class='group-hover/edit_file:opacity-70 w-full h-full object-full hover:opacity-70 ' src='<%= session[:avatar_url] %>' alt="" />
                 </div>
             </div>
             <div class='mt-4'>
@@ -31,7 +33,7 @@
             </div>
         <% end %>
     </section>
-    <section class="change_password w-64 border p-2 rounded">
+    <section class="change_password w-72 border p-2 rounded">
         <%= form_with url: '/auth/change_password', local: true, class: 'space-y-6' do %>
             <div class="space-y-4">
                 <div class="space-y-2">
