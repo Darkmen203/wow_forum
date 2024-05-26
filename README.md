@@ -7,7 +7,7 @@ The setups steps expect following tools installed on the system.
 ##### 1. Check out the repository
 
 ```bash
-git clone git@github.com:Darkmen203/wow_forum.git
+git clone https://github.com/Darkmen203/wow_forum.git  
 ```
 
 ##### 2. Prepare to work
@@ -35,7 +35,7 @@ rails db:seed
 Run the following commands to start tests.
 
 ```ruby
-rails db:shema:load
+rails db:schema:load
 rails test
 ```
 
