@@ -7,6 +7,10 @@ Rails.application.routes.draw do
   root 'questions#index'
   resources :questions
   resources :answers
+  # resources :password_resets, only: [:new, :create, :edit, :update]
+  get "/password_reset/new", to: "password_resets#new"
+  post "/password_reset/create", to: "password_resets#create"
+  get "/password_reset/succes", to: "password_resets#succes", as: "succes"
 
   get '/new', to: 'questions#new'
   post '/create', to: 'questions#create'
