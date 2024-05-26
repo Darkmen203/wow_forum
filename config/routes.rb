@@ -37,6 +37,8 @@ Rails.application.routes.draw do
   get 'profile/my_answers', to: "profiles#my_answers", as: :my_answers 
   get 'profile/my_questions', to: "profiles#my_questions", as: :my_questions
   get 'profile/settings', to: "profiles#settings"
+  get "/password_resets/", to: "password_resets#pass_form"
+  post "/change_pass_final/", to: "password_resets#change_pass_final"
 
 
   post '/uploads/create', to: "users#create_avatar_file"
